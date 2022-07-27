@@ -13,4 +13,4 @@ async def hello(ctx):
 async def test(ctx):
     await ctx.reply ("test!")
     print("send command 'test!'")
-bot.run("OTU5MTMzMzI2NDcwNDMwNzcw.G2Bws4.fVBCPpsYOoaH5T24xmcCHCugy9QlQ6uSX52__M")
+bot.run("")
