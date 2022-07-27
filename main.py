@@ -7,10 +7,10 @@ async def on_ready():
 
 @bot.command()
 async def hello(ctx):
-    await ctx.reply! ("Hello!")
+    await ctx.reply ("Hello!")
     print("send command 'hello'.")
 @bot.command()
 async def test(ctx):
-    await ctx.reply ("test!")
+    await ctx.send ("test!")
     print("send command 'test!'")
 bot.run("")
