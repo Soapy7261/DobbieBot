@@ -1,8 +1,7 @@
 import discord
 from discord.ext import commands
 
-bot = commands.Bot(command_prefix="!", status=discord.Status.online,
-                   activity=discord.Activity(type=discord.ActivityType.playing, name="watching how bad I am at coding"))
+bot = commands.Bot(command_prefix="!", status=discord.Status.online, activity=discord.Activity(type=discord.ActivityType.playing, name="watching how bad I am at coding"))
 
 
 @bot.listen()
