@@ -1,7 +1,7 @@
 import discord
 from discord.ext import commands
 
-bot = commands.Bot(command_prefix="!", status=discord.Status.online, activity=discord.Activity(type=discord.ActivityType.watching, name="how bad I am at coding"))
+bot = commands.Bot(command_prefix="-", status=discord.Status.online, activity=discord.Activity(type=discord.ActivityType.watching, name="how bad I am at coding"), owner='820255805257023498')
 
 
 @bot.listen()
@@ -24,21 +24,18 @@ async def test(ctx):
 @bot.command()
 async def add(ctx, a: int, b: int):
     await ctx.send(f"{a} + {b} = {a + b}")
+    print("command used 'add'.")
 
 
 @bot.command()
 async def mutiplay(ctx, a: int, b: int):
     await ctx.send(f"{a} * {b} = {a * b}")
+    print("command used 'mutiplay'.")
 
 
 @bot.command()
 async def divide(ctx, a: int, b: int):
-    await ctx.send(f"{a} / {b} = {a / b}")
-    print("command 'divide' runed")
-
-@bot.command()
-async def help1(ctx):
-    await ctx.reply("the command you can use:/n test")
-
+    await ctx.send(f"{a} / {b} = {a / b} :grinning:")
+    print("command used 'divide'.")
 
 bot.run("")
