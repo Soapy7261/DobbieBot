@@ -1,7 +1,9 @@
 import discord
 from discord.ext import commands
 
-bot = commands.Bot(command_prefix="-", status=discord.Status.dnd, activity=discord.Activity(type=discord.ActivityType.watching, name="how bad I am at coding"), owner='820255805257023498')
+bot = commands.Bot(command_prefix="-", status=discord.Status.dnd,
+                   activity=discord.Activity(type=discord.ActivityType.watching, name="how bad I am at coding"),
+                   owner='820255805257023498')
 
 
 @bot.listen()
@@ -39,9 +41,14 @@ async def divide(ctx, a: int, b: int):
     print("command used 'divide'.")
 
 
+
 @bot.event
 async def on_command_error(ctx, error):
     if isinstance(error, discord.ext.commands.CommandError):
-       await ctx.send(error "you think its an bug? message the owner")
-       print(error )
+        await ctx.reply("oh noo! there is an error :")
+        await ctx.send(error)
+        await ctx.send("message the owner for support ")
+        print(error)
+
+
 bot.run("")
