@@ -28,9 +28,9 @@ async def add(ctx, a: int, b: int):
 
 
 @bot.command()
-async def mutiplay(ctx, a: int, b: int):
+async def multi(ctx, a: int, b: int):
     await ctx.send(f"{a} * {b} = {a * b}")
-    print("command used 'mutiplay'.")
+    print("command used 'muti'.")
 
 
 @bot.command()
@@ -38,4 +38,10 @@ async def divide(ctx, a: int, b: int):
     await ctx.send(f"{a} / {b} = {a / b} :grinning:")
     print("command used 'divide'.")
 
+
+@bot.event
+async def on_command_error(ctx, error):
+    if isinstance(error, discord.ext.commands.CommandError):
+       await ctx.send(error "you think its an bug? message the owner")
+       print(error )
 bot.run("")
