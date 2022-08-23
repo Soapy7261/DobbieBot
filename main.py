@@ -51,4 +51,4 @@ async def on_command_error(ctx, error):
         print(error)
 
 
-bot.run("OTU5MTMzMzI2NDcwNDMwNzcw.GFMhRG.PCI_cGCYQG4cfw1UK4YXqSarukmQ7P8KRnXP9g")
+bot.run("")
