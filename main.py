@@ -1,14 +1,17 @@
 import discord
 from discord.ext import commands
 
-bot = commands.Bot(debug_guilds=[955135608228024394], command_prefix="-", status=discord.Status.dnd,activity=discord.Activity(type=discord.ActivityType.listening, name="keyboard noises"),owner='820255805257023498')
+intents = discord.Intents.default()
+bot =commands.Bot(debug_guilds=[955135608228024394], command_prefix="-", status=discord.Status.dnd,activity=discord.Activity(type=discord.ActivityType.listening, name="keyboard noises"),owner='820255805257023498',intents=intents,)
 
 
 @bot.listen()
 async def on_ready():
     print("Now ready!")
-    embed = discord.Embed(title="Online!", timestamp=discord.utils.utcnow(), color=0x00ff00)
+    embed = discord.Embed(title="Online! \nTime to mess around!", color=0x00ff00,)
     await bot.get_guild(955135608228024394).get_channel(1011649871511572500).send(embed=embed)
+
+
 
 @bot.command()
 async def hello(ctx):
@@ -23,25 +26,25 @@ async def test(ctx):
 
 
 @bot.command()
-async def add(ctx, a: int, b: int):
-    await ctx.send(f"{a} + {b} = {a + b}")
+async def add(ctx, add1: int, add2: int):
+    await ctx.send(f"{add1} + {add2} = {add2 + add2}")
     print("command used 'add'.")
 
 
 @bot.command()
-async def multi(ctx, a: int, b: int):
-    await ctx.send(f"{a} * {b} = {a * b}")
+async def multi(ctx, multi1: int, multi2: int):
+    await ctx.send(f"{multi1} * {multi2} = {multi1 * multi2}")
     print("command used 'muti'.")
 
 
 @bot.command()
-async def divide(ctx, a: int, b: int):
-    if b == 0:
-        await ctx.send ("You fool.")
+async def divide(ctx, divide1: int, divide2: int):
+    if divide2 == 0:
+        await ctx.send ("You fool. :smiling_imp: ")
         return
-    await ctx.send(f"{a} / {b} = {a / b} :grinning:")
+    await ctx.send(f"{divide1} / {divide2} = {divide1 / divide2}")
     print("command used 'divide'.")
-    print(f"{a} / {b} = {a / b}"  )
+    print(f"{divide1} / {divide2} = {divide1 / divide2}")
 
 
 @bot.command()
@@ -51,8 +54,8 @@ async def papa(ctx, b1 ):
 @bot.event
 async def on_command_error(ctx, error):
     if isinstance(error, discord.ext.commands.CommandError):
-        await ctx.reply(f"oh noo! there is an error : {str(error)}\nmessage the owner for support")
+        await ctx.reply(f"oh noo! there is an error:  \n`{str(error)}`\nmessage the owner for support")
         print(error)
 
 
-bot.run("")
+bot.run('')
