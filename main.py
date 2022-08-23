@@ -37,8 +37,12 @@ async def multi(ctx, a: int, b: int):
 async def divide(ctx, a: int, b: int):
     await ctx.send(f"{a} / {b} = {a / b} :grinning:")
     print("command used 'divide'.")
+    print(f"{a} / {b} = {a / b}"  )
 
 
+@bot.command()
+async def papa(ctx, b1 ):
+    await ctx.send(papa)
 
 @bot.event
 async def on_command_error(ctx, error):
@@ -47,4 +51,4 @@ async def on_command_error(ctx, error):
         print(error)
 
 
-bot.run("")
+bot.run("OTU5MTMzMzI2NDcwNDMwNzcw.GFMhRG.PCI_cGCYQG4cfw1UK4YXqSarukmQ7P8KRnXP9g")
