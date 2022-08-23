@@ -43,9 +43,7 @@ async def divide(ctx, a: int, b: int):
 @bot.event
 async def on_command_error(ctx, error):
     if isinstance(error, discord.ext.commands.CommandError):
-        await ctx.reply("oh noo! there is an error :")
-        await ctx.send(error)
-        await ctx.send("message the owner for support ")
+        await ctx.reply(f"oh noo! there is an error : {str(error)}\nmessage the owner for support")
         print(error)
 
 
