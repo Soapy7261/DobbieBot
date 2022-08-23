@@ -35,6 +35,9 @@ async def multi(ctx, a: int, b: int):
 
 @bot.command()
 async def divide(ctx, a: int, b: int):
+    if b == 0:
+        await ctx.send ("You fool.")
+        return
     await ctx.send(f"{a} / {b} = {a / b} :grinning:")
     print("command used 'divide'.")
     print(f"{a} / {b} = {a / b}"  )
