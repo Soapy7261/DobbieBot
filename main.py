@@ -7,7 +7,8 @@ bot = commands.Bot(debug_guilds=[955135608228024394], command_prefix="-", status
 @bot.listen()
 async def on_ready():
     print("Now ready!")
-
+    embed = discord.Embed(title="Online!", timestamp=discord.utils.utcnow(), color=0x00ff00)
+    await bot.get_guild(955135608228024394).get_channel(1011649871511572500).send(embed=embed)
 
 @bot.command()
 async def hello(ctx):
