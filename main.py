@@ -45,7 +45,7 @@ async def divide(ctx, a: int, b: int):
 
 @bot.command()
 async def papa(ctx, b1 ):
-    await ctx.send(papa)
+    await ctx.send(b1)
 
 @bot.event
 async def on_command_error(ctx, error):
