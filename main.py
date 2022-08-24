@@ -25,7 +25,7 @@ async def hello(ctx):
 
 @bot.command()
 async def hello_hi(ctx):
-   embed= discord.Embed(title="embed works", timestamp=discord.utils.utcnow(), color=0x00ff00,)
+   embed= discord.Embed(title="embed works", timestamp=discord.utils.utcnow(), color=0x00ff55,)
    await ctx.send(embed=embed)
 
 
