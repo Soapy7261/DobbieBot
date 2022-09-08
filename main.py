@@ -69,6 +69,13 @@ async def sub(ctx, subt1: int, subt2: int):
 @bot.command()
 async def papa(ctx, b1):
     await ctx.send(b1)
+@bot.command()
+async def cal(ctx,nr1: int, mark, nr2:int ):
+    if mark==("+"):
+        await ctx.send (f"{nr1}+{nr2} = {nr1 + nr2}")
+    elif mark==('-'):
+        await ctx.send (f"{nr1}-{nr2} = {nr1 - nr2}")
+
 
 
 @bot.event
