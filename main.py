@@ -73,10 +73,12 @@ async def papa(ctx, b1):
 async def cal(ctx,nr1: int, mark, nr2:int ):
     if mark==("+"):
         await ctx.send (f"{nr1}+{nr2} = {nr1 + nr2}")
-    elif mark==('-'):
+    if mark==('-'):
         await ctx.send (f"{nr1}-{nr2} = {nr1 - nr2}")
-
-
+    elif mark==('*', 'x'):
+        await ctx.send()(f"{nr1} * {nr2} = {nr1 * nr2}")
+    elif mark==('/'):
+        await ctx.send (f"{nr1}/{nr2} = {nr1 / nr2}")
 
 @bot.event
 async def on_command_error(ctx, error):
