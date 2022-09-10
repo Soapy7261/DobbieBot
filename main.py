@@ -84,6 +84,7 @@ async def cal(ctx,nr1: int, mark, nr2:int ):
     embed=discord.Embed(title='calculation',timestamp=discord.utils.utcnow(),color=0x00ff00,)
     embed.add_field(name='-', value=calcu)
     await ctx.send(embed=embed)
+    print('command cal runned;'+calcu)
     calcu=("n")
 
 
