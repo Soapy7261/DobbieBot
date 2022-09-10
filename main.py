@@ -74,24 +74,31 @@ async def papa(ctx, b1):
 @bot.command()
 async def cal(ctx,nr1: int, mark, nr2:int ):
     if mark==("+"):
-        await ctx.send (f"{nr1}+{nr2} = {nr1 + nr2}")
+        calcu=(f"{nr1}+{nr2} = {nr1 + nr2}")
     if mark==('-'):
-        await ctx.send (f"{nr1}-{nr2} = {nr1 - nr2}")
+        calcu=(f"{nr1}-{nr2} = {nr1 - nr2}")
     elif mark==('*', 'x'):
-        await ctx.send()(f"{nr1} * {nr2} = {nr1 * nr2}")
+        calcu=(f"{nr1} * {nr2} = {nr1 * nr2}")
     elif mark==('/'):
-        await ctx.send (f"{nr1}/{nr2} = {nr1 / nr2}")
+        calcu=(f"{nr1}/{nr2} = {nr1 / nr2}")
+    embed=discord.Embed(title='calculation',timestamp=discord.utils.utcnow(),color=0x00ff00,)
+    embed.add_field(name='-', value=calcu)
+    await ctx.send(embed=embed)
+    calcu=("n")
+
+
+
+
 
 @bot.event
 async def on_command_error(ctx, error):
     if isinstance(error, discord.ext.commands.CommandError):
         await ctx.reply(f"oh noo! there is an error:  \n`{str(error)}`\nmessage the owner for support")
-        print(error)
-
         embed = discord.Embed(title="Error :(", timestamp=discord.utils.utcnow(),color=0xff0000, )
         #embed.add_field(name = "Author:", value=message.author)
         #embed.add_field(name = "Author ID:", value = message.author.id)
         embed.add_field(name = "Error:", value=str(error))
+
         await bot.get_guild(955135608228024394).get_channel(1017880577506017361).send(embed=embed)
 
 bot.run(os.getenv('TOKEN'))
