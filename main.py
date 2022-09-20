@@ -78,13 +78,18 @@ async def cal(ctx,nr1: int, mark, nr2:int ):
     if mark==('-'):
         calcu=(f"{nr1}-{nr2} = {nr1 - nr2}")
     elif mark==('*', 'x'):
-        calcu=(f"{nr1} * {nr2} = {nr1 * nr2}")
-    elif mark==('/'):
-        calcu=(f"{nr1}/{nr2} = {nr1 / nr2}")
+        calcu=(f"{nr1} {mark} {nr2} = {nr1 * nr2}")
+    elif mark== '/':
+        if nr2 !=0:
+            calcu=(f"{nr1}/{nr2} = {nr1 / nr2}")
+        else:
+            calcu=("you fool!")
+
+
     embed=discord.Embed(title='calculation',timestamp=discord.utils.utcnow(),color=0x00ff00,)
-    embed.add_field(name='-', value=calcu)
+    embed.add_field(name='', value=calcu)
     await ctx.send(embed=embed)
-    print('command cal runned;'+calcu)
+    print('command cal runned; '+calcu)
     calcu=("n")
 
 
