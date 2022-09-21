@@ -73,21 +73,26 @@ async def papa(ctx, b1):
     await ctx.send(b1)
 @bot.command()
 async def cal(ctx,nr1: int, mark, nr2:int ):
+
     if mark==("+"):
         calcu=(f"{nr1}+{nr2} = {nr1 + nr2}")
     if mark==('-'):
         calcu=(f"{nr1}-{nr2} = {nr1 - nr2}")
-    elif mark==('*', 'x'):
-        calcu=(f"{nr1} {mark} {nr2} = {nr1 * nr2}")
-    elif mark== '/':
+    if mark==('*', 'x'):
+        if nr2!= 0:
+            calcu=(f"{nr1} {mark} {nr2} = {nr1 * nr2}")
+    else:
+        calcu=("0 what did you hope for?")
+    if mark== '/':
         if nr2 !=0:
             calcu=(f"{nr1}/{nr2} = {nr1 / nr2}")
         else:
             calcu=("you fool!")
 
 
+
     embed=discord.Embed(title='calculation',timestamp=discord.utils.utcnow(),color=0x00ff00,)
-    embed.add_field(name='', value=calcu)
+    embed.add_field(name='your calculation is here!', value=calcu)
     await ctx.send(embed=embed)
     print('command cal runned; '+calcu)
     calcu=("n")
