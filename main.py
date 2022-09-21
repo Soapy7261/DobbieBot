@@ -17,7 +17,7 @@ bot = commands.Bot(debug_guilds=[955135608228024394], command_prefix="-", status
 @bot.listen()
 async def on_ready():
     print("Now ready!")
-    embed = discord.Embed(title=":green_circle: Online!  \nTime to mess around!", timestamp=discord.utils.utcnow(),
+    embed = discord.Embed(title=":green_circle: Online!\nTime to mess around!", timestamp=discord.utils.utcnow(),
                           color=0x00ff00, )
     await bot.get_guild(955135608228024394).get_channel(1011649871511572500).send(embed=embed)
 
@@ -69,7 +69,7 @@ async def sub(ctx, subt1: int, subt2: int):
 
 
 @bot.command()
-async def papa(ctx, b1):
+async def papa(ctx, *, b1):
     await ctx.send(b1)
 @bot.command()
 async def cal(ctx,nr1: int, mark, nr2:int ):
