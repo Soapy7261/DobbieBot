@@ -42,7 +42,9 @@ async def test(ctx):
 
 @bot.command()
 async def add(ctx, add1: int, add2: int):
-    await ctx.send(f"{add1} + {add2} = {add2 + add2}")
+    add.thing='this command is now merged in to the -call command use `-call' add1 '+' add2 '` and then whitout those ' \
+                                                                                            'stupid marks'
+    await ctx.send(add.thing)
     print("command used 'add'.")
 
 
