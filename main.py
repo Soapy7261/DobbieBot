@@ -22,7 +22,7 @@ async def on_ready():
     await bot.get_guild(955135608228024394).get_channel(1011649871511572500).send(embed=embed)
 
 
-@bot.command()
+@bot.hybrid_command()
 async def hello(ctx):
     await ctx.reply("Hello!")
     print("send command 'hello'.")
@@ -42,9 +42,8 @@ async def test(ctx):
 
 @bot.command()
 async def add(ctx, add1: int, add2: int):
-    add.thing='this command is now merged in to the -call command use `-call' add1 '+' add2 '` and then whitout those ' \
-                                                                                            'stupid marks'
-    await ctx.send(add.thing)
+    add.thing='this command is now merged in to the -call command use `-call', add1 ,  add2, ' and then whitout those stupid marks'
+    await ctx.send (add.thig)
     print("command used 'add'.")
 
 
