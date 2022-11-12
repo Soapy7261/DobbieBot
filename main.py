@@ -15,24 +15,23 @@ bot = commands.Bot(debug_guilds=[955135608228024394], command_prefix="-", status
                    activity=discord.Activity(type=discord.ActivityType.listening, name="keyboard noises and no errors"),
                    owner='820255805257023498', intents=intents, )
 
-client = discord.Client(intents=intents)
 
-#try for some set up for / commands
-class cbot(discord.client.Client):
-    def __init__(self):
-        super().__init__(intents=discord.Intents.default())
-        self.synced = False
-    async def on_reday(self):
-        await tree.synced(guild=discord.Object(id=955135608228024394))
-        self.synced = True
-slash=cbot()
-tree=app_commands.CommandTree(slash)
+
+
+
+
 @bot.listen()
 async def on_ready():
-    print("Now ready!")
+
+    try:
+        synced = await bot.tree.sync()
+        print(f'synced {len(synced)} commands(s)')
+    except Exception as e:
+        print(e)
     embed = discord.Embed(title=":green_circle: Online!\nTime to mess around!", timestamp=discord.utils.utcnow(),
                           color=0x00ff00, )
     await bot.get_guild(955135608228024394).get_channel(1011649871511572500).send(embed=embed)
+    print("Now ready!")
 
 
 
@@ -41,9 +40,9 @@ async def hello(ctx):
     print("send command 'hello'.")
 
 
-@tree.command(name="hello", description='say hello', guild=discord.Object(id=955135608228024394))
-async def self(Interation: discord.Interaction):
-    await Interation.response.send_message(f'hi')
+@bot.tree.command(name="hello", description='say hello', guild=discord.Object(id=955135608228024394))
+async def hello(interaction: discord.Interaction):
+    await interaction.response.send_message(f"he {interaction.user}", ephemeral=True)
 
 async def hello_hi(ctx):
     embed = discord.Embed(title="embed works", timestamp=discord.utils.utcnow(), color=0x00ff55, )
@@ -103,16 +102,11 @@ async def cal(ctx,nr1: int, mark, nr2:int ):
     if mark==('*', 'x'):
         if nr2!= 0:
             calcu=(f"{nr1} {mark} {nr2} = {nr1 * nr2}")
-    else:
-        calcu=("0 what did you hope for?")
     if mark== '/':
         if nr2 !=0:
             calcu=(f"{nr1}/{nr2} = {nr1 / nr2}")
         else:
             calcu=("you fool!")
-
-
-
     embed=discord.Embed(title='calculation',timestamp=discord.utils.utcnow(),color=0x00ff00,)
     embed.add_field(name='your calculation is here!', value=calcu)
     await ctx.send(embed=embed)
