@@ -1,18 +1,22 @@
 import discord
 from discord import message
 from discord.ext import commands
+from discord import app_commands
+
 import os
-import dotenv
 from dotenv import load_dotenv
 
 load_dotenv()
 
+
 intents = discord.Intents.default()
 intents.message_content = True
 bot = commands.Bot(debug_guilds=[955135608228024394], command_prefix="-", status=discord.Status.dnd,
-                   activity=discord.Activity(type=discord.ActivityType.listening, name="keyboard noises"),
+                   activity=discord.Activity(type=discord.ActivityType.listening, name="keyboard noises and no errors"),
                    owner='820255805257023498', intents=intents, )
 
+client = discord.Client(intents=intents)
+tree = app_commands.CommandTree(client)
 
 @bot.listen()
 async def on_ready():
@@ -22,16 +26,22 @@ async def on_ready():
     await bot.get_guild(955135608228024394).get_channel(1011649871511572500).send(embed=embed)
 
 
-@bot.hybrid_command()
+
 async def hello(ctx):
     await ctx.reply("Hello!")
     print("send command 'hello'.")
 
+@tree.command(guild=discord.Object(id=955135608228024394))
+async def slash(interaction: discord.Interaction, number: int, string: str):
+    await interaction.response.send_message(f'{number=} {string=}', ephemeral=True)
 
-@bot.command()
+
 async def hello_hi(ctx):
     embed = discord.Embed(title="embed works", timestamp=discord.utils.utcnow(), color=0x00ff55, )
     await ctx.send(embed=embed)
+
+
+
 
 
 @bot.command()
@@ -72,6 +82,8 @@ async def sub(ctx, subt1: int, subt2: int):
 @bot.command()
 async def papa(ctx, *, b1):
     await ctx.send(b1)
+
+
 @bot.command()
 async def cal(ctx,nr1: int, mark, nr2:int ):
 
