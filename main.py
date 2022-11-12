@@ -16,8 +16,17 @@ bot = commands.Bot(debug_guilds=[955135608228024394], command_prefix="-", status
                    owner='820255805257023498', intents=intents, )
 
 client = discord.Client(intents=intents)
-tree = app_commands.CommandTree(client)
 
+#try for some set up for / commands
+class cbot(discord.client.Client):
+    def __init__(self):
+        super().__init__(intents=discord.Intents.default())
+        self.synced = False
+    async def on_reday(self):
+        await tree.synced(guild=discord.Object(id=955135608228024394))
+        self.synced = True
+slash=cbot()
+tree=app_commands.CommandTree(slash)
 @bot.listen()
 async def on_ready():
     print("Now ready!")
@@ -31,10 +40,10 @@ async def hello(ctx):
     await ctx.reply("Hello!")
     print("send command 'hello'.")
 
-@tree.command(guild=discord.Object(id=955135608228024394))
-async def slash(interaction: discord.Interaction, number: int, string: str):
-    await interaction.response.send_message(f'{number=} {string=}', ephemeral=True)
 
+@tree.command(name="hello", description='say hello', guild=discord.Object(id=955135608228024394))
+async def self(Interation: discord.Interaction):
+    await Interation.response.send_message(f'hi')
 
 async def hello_hi(ctx):
     embed = discord.Embed(title="embed works", timestamp=discord.utils.utcnow(), color=0x00ff55, )
