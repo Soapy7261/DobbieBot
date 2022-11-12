@@ -1,8 +1,8 @@
 import discord
-from discord import message
+
 from discord.ext import commands
-from discord import app_commands
-import dotenv
+
+
 import os
 from dotenv import load_dotenv
 
@@ -16,18 +16,8 @@ bot = commands.Bot(debug_guilds=[955135608228024394], command_prefix="-", status
                    owner='820255805257023498', intents=intents, )
 
 
-
-
-
-
 @bot.listen()
 async def on_ready():
-
-    try:
-        synced = await bot.tree.sync()
-        print(f'synced {len(synced)} commands(s)')
-    except Exception as e:
-        print(e)
     embed = discord.Embed(title=":green_circle: Online!\nTime to mess around!", timestamp=discord.utils.utcnow(),
                           color=0x00ff00, )
     await bot.get_guild(955135608228024394).get_channel(1011649871511572500).send(embed=embed)
@@ -40,7 +30,7 @@ async def hello(ctx):
     print("send command 'hello'.")
 
 
-@bot.tree.command(name="hello", description='say hello', guild=discord.Object(id=955135608228024394))
+@bot.slash_command(name="hello", description='say hello', guild=discord.Object(id=955135608228024394))
 async def hello(interaction: discord.Interaction):
     await interaction.response.send_message(f"he {interaction.user}", ephemeral=True)
 
