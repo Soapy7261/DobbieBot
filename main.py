@@ -21,6 +21,23 @@ async def on_ready():
     print("Now ready!")
 
 
+@bot.slash_command(name="cal1", description="run a calculation", guild=discord.Object(id=955135608228024394))
+async def cal1(ctx, first :discord.Option(int), mark: discord.Option(str), second: discord.Option(int)):
+
+    if mark==("+"):
+        calcu=(f"{first}+{second} = {first + second}")
+    if mark==('-'):
+        calcu=(f"{first}-{second} = {first - second}")
+    if mark==('*', 'x'):
+        if  first or second!= 0:
+            calcu=(f"{first} {mark} {second} = {first * second}")
+    if mark== '/':
+        if first or second !=0:
+            calcu=(f"{first}/{second} = {first / second}")
+    embed=discord.Embed(title='calculation',timestamp=discord.utils.utcnow(),color=0x00ff00,)
+    embed.add_field(name='your calculation is here!', value=calcu)
+    await ctx.respond(embed=embed)
+    print(f'command cal runned; {calcu} {discord.user.User}')
 
 async def hello(ctx):
     await ctx.reply("Hello!")
@@ -31,9 +48,10 @@ async def hello(ctx):
 async def hello(interaction: discord.Interaction):
     await interaction.response.send_message(f"he {interaction.user}", ephemeral=True)
 
-async def hello_hi(ctx):
-    embed = discord.Embed(title="embed works", timestamp=discord.utils.utcnow(), color=0x00ff55, )
-    await ctx.send(embed=embed)
+
+
+
+
 
 
 
@@ -97,8 +115,8 @@ async def cal(ctx,nr1: int, mark, nr2:int ):
     embed=discord.Embed(title='calculation',timestamp=discord.utils.utcnow(),color=0x00ff00,)
     embed.add_field(name='your calculation is here!', value=calcu)
     await ctx.send(embed=embed)
-    print('command cal runned; '+calcu)
-    calcu=("n")
+    print(f'command cal runned; {calcu} {discord.user.User}')
+
 
 
 
