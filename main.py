@@ -24,6 +24,7 @@ async def on_ready():
 @bot.slash_command(name="cal1", description="run a calculation", guild=discord.Object(id=955135608228024394))
 async def cal1(ctx, first :discord.Option(int), mark: discord.Option(str), second: discord.Option(int)):
 
+
     if mark==("+"):
         calcu=(f"{first}+{second} = {first + second}")
     if mark==('-'):
@@ -34,14 +35,28 @@ async def cal1(ctx, first :discord.Option(int), mark: discord.Option(str), secon
     if mark== '/':
         if first or second !=0:
             calcu=(f"{first}/{second} = {first / second}")
+    if first or second== 0 and mark==('x', '*', '/'):
+        calcu=('')
     embed=discord.Embed(title='calculation',timestamp=discord.utils.utcnow(),color=0x00ff00,)
     embed.add_field(name='your calculation is here!', value=calcu)
     await ctx.respond(embed=embed)
     print(f'command cal runned; {calcu} {discord.user.User}')
 
-async def hello(ctx):
-    await ctx.reply("Hello!")
-    print("send command 'hello'.")
+
+@bot.slash_command(name='info', description='get info about the bot')
+async def info(ctx):
+    embed= discord.Embed(
+        title="DobbieBot",
+        description ="The Dobbie bot ",
+        color=discord.Color.dark_gray
+    )
+    embed.add_field(value=(f'ping = {discord.bot.latency}')
+    embed.add_field(name="info about the bot",
+                    value="this bot is made by Soapy7261#8558 and Dobbie#4778. To learn Dobbie how Discord bots work and how py-cord works!")
+    embed.add_field(name="main commands", value="the /call1 comamnd and the /info command")
+
+
+
 
 
 @bot.slash_command(name="hello", description='say hello', guild=discord.Object(id=955135608228024394))
