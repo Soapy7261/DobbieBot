@@ -21,7 +21,7 @@ async def on_ready():
     print("Now ready!")
 
 
-@bot.slash_command(name="cal1", description="run a calculation", guild=discord.Object(id=955135608228024394))
+@bot.slash_command(name="cal1", description="run a calculation")
 async def cal1(ctx, first :discord.Option(int), mark: discord.Option(str), second: discord.Option(int)):
 
 
@@ -35,8 +35,6 @@ async def cal1(ctx, first :discord.Option(int), mark: discord.Option(str), secon
     if mark== '/':
         if first or second !=0:
             calcu=(f"{first}/{second} = {first / second}")
-    if first or second== 0 and mark==('x', '*', '/'):
-        calcu=('')
     embed=discord.Embed(title='calculation',timestamp=discord.utils.utcnow(),color=0x00ff00,)
     embed.add_field(name='your calculation is here!', value=calcu)
     await ctx.respond(embed=embed)
@@ -50,11 +48,11 @@ async def info(ctx):
         description ="The Dobbie bot ",
         color=discord.Color.dark_gray
     )
-    embed.add_field(value=(f'ping = {discord.bot.latency}')
+    embed.add_field(value=(f'ping = {discord.bot.latency}'))
     embed.add_field(name="info about the bot",
                     value="this bot is made by Soapy7261#8558 and Dobbie#4778. To learn Dobbie how Discord bots work and how py-cord works!")
     embed.add_field(name="main commands", value="the /call1 comamnd and the /info command")
-
+#await ctx.respond (embed= embed)
 
 
 
