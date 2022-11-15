@@ -6,13 +6,13 @@ from dotenv import load_dotenv
 load_dotenv()
 
 
-intents = discord.Intents.default()
+intents = discord.Intents.all()
 intents.message_content = True
 bot = commands.Bot(debug_guilds=[955135608228024394], command_prefix="-", status=discord.Status.dnd,
                    activity=discord.Activity(type=discord.ActivityType.listening, name="keyboard noises and no errors"),
                    owner='820255805257023498', intents=intents, )
 
-
+bot=discord.Bot()
 @bot.listen()
 async def on_ready():
     embed = discord.Embed(title=":green_circle: Online!\nTime to mess around!", timestamp=discord.utils.utcnow(),
@@ -43,16 +43,17 @@ async def cal1(ctx, first :discord.Option(int), mark: discord.Option(str), secon
 
 @bot.slash_command(name='info', description='get info about the bot')
 async def info(ctx):
-    embed= discord.Embed(
+    embed = discord.Embed(
         title="DobbieBot",
         description ="The Dobbie bot ",
-        color=discord.Color.dark_gray
-    )
-    embed.add_field(value=(f'ping = {discord.bot.latency}'))
+        timestamp=discord.utils.utcnow(),
+        color=discord.Color.dark_gray())
+    embed.add_field(name="ping",value=(f'ping = {bot.latency}'))
     embed.add_field(name="info about the bot",
                     value="this bot is made by Soapy7261#8558 and Dobbie#4778. To learn Dobbie how Discord bots work and how py-cord works!")
+
     embed.add_field(name="main commands", value="the /call1 comamnd and the /info command")
-#await ctx.respond (embed= embed)
+    await ctx.respond(embed=embed)
 
 
 
@@ -109,12 +110,11 @@ async def sub(ctx, subt1: int, subt2: int):
 async def papa(ctx, *, b1):
     await ctx.send(b1)
 
-
 @bot.command()
 async def cal(ctx,nr1: int, mark, nr2:int ):
 
     if mark==("+"):
-        calcu=(f"{nr1}+{nr2} = {nr1 + nr2}")
+       calcu=(f"{nr1}+{nr2} = {nr1 + nr2}")
     if mark==('-'):
         calcu=(f"{nr1}-{nr2} = {nr1 - nr2}")
     if mark==('*', 'x'):
