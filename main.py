@@ -48,7 +48,7 @@ async def info(ctx):
         description ="The Dobbie bot ",
         timestamp=discord.utils.utcnow(),
         color=discord.Color.dark_gray())
-    embed.add_field(name="ping",value=(f'ping = {bot.latency}'))
+    embed.add_field(name="ping",value=(f'ping = {round(bot.latency*1000, 2)}'))
     embed.add_field(name="info about the bot",
                     value="this bot is made by Soapy7261#8558 and Dobbie#4778. To learn Dobbie how Discord bots work and how py-cord works!")
 
