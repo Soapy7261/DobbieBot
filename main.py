@@ -7,7 +7,6 @@ load_dotenv()
 
 
 intents = discord.Intents.all()
-intents.message_content = True
 bot = commands.Bot(debug_guilds=[955135608228024394], command_prefix="-", status=discord.Status.dnd,
                    activity=discord.Activity(type=discord.ActivityType.listening, name="keyboard noises and no errors"),
                    owner='820255805257023498', intents=intents, )
@@ -22,7 +21,7 @@ async def on_ready():
 
 
 @bot.slash_command(name="cal1", description="run a calculation")
-async def cal1(ctx, first :discord.Option(int), mark: discord.Option(str), second: discord.Option(int)):
+async def cal1(ctx, first :discord.Option(int), mark: discord.Option(description="What operation you want to run", choices=["+", "-", "*", "/"]), second: discord.Option(int)):
 
 
     if mark==("+"):
