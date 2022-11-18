@@ -26,11 +26,11 @@ async def cal1(ctx, first :discord.Option(int), mark: discord.Option(description
 
     if mark==("+"):
         calcu=(f"{first}+{second} = {first + second}")
+        print('cal done ')
     if mark==('-'):
         calcu=(f"{first}-{second} = {first - second}")
-    if mark==('*', 'x'):
-        if  first or second!= 0:
-            calcu=(f"{first} {mark} {second} = {first * second}")
+    if mark==('*'):
+        calcu=(f"{first} {mark} {second} = {first * second}")
     if mark== '/':
         if first or second !=0:
             calcu=(f"{first}/{second} = {first / second}")
