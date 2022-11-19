@@ -137,7 +137,7 @@ async def cal(ctx,nr1: int, mark, nr2:int ):
 @bot.event
 async def on_command_error(ctx, error):
     if isinstance(error, discord.ext.commands.CommandError):
-        await ctx.reply(f"oh noo! there is an error:  \n`{str(error)}`\nmessage the owner for support")
+        await ctx.reply(f"oh noo! there is an error:```py\n{str(error)}```message the owner for support")
         embed = discord.Embed(title="Error :(", timestamp=discord.utils.utcnow(),color=0xff0000, )
         #embed.add_field(name = "Author:", value=message.author)
         #embed.add_field(name = "Author ID:", value = message.author.id)
