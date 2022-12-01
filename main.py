@@ -145,4 +145,9 @@ async def on_command_error(ctx, error):
 
         await bot.get_guild(955135608228024394).get_channel(1017880577506017361).send(embed=embed)
 
+@bot.event
+async def on_message(message):
+    if "dobbie" in message.content.lower():
+        await message.add_reaction("👀")
+
 bot.run(os.getenv('TOKEN'))
