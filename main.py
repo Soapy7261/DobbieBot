@@ -20,7 +20,12 @@ async def on_ready():
     await bot.get_guild(955135608228024394).get_channel(1011649871511572500).send(embed=embed)
     print("Now ready!")
 
-
+@bot.slash_command(description="Restart the bot")
+async def restart(ctx):
+    await ctx.respond ("Restarting.")    
+    embed = discord.Embed(title=":arrows_counterclockwise: Restarting...", timestamp=discord.utils.utcnow(), color=0xFFA500)
+    await bot.get_guild(955135608228024394).get_channel(1048306173071347782).send(embed=embed)
+    quit()
 @bot.slash_command(name="cal1", description="run a calculation")
 async def cal1(ctx, first :discord.Option(int), mark: discord.Option(description="What operation you want to run", choices=["+", "-", "*", "/"]), second: discord.Option(int)):
 
