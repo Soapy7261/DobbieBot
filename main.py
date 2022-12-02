@@ -101,7 +101,7 @@ async def divide(ctx, divide1: int, divide2: int):
 
 @bot.command()
 async def sub(ctx, subt1: int, subt2: int):
-    await ctx.send(f"{subt1}-{subt2} = {subt1 - subt2}")
+    await ctx.respond(f"{subt1}-{subt2} = {subt1 - subt2}")
     print("command sub is used" + f"{subt1}-{subt2} = {subt1 - subt2}")
 
 
