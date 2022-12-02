@@ -147,6 +147,8 @@ async def on_command_error(ctx, error):
 
 @bot.listen()
 async def on_message(message):
+    print ("message")
+    print (message.content)
     if "dobbie" in message.content.lower():
         await message.add_reaction("👀")
 
