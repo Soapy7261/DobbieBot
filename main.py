@@ -7,12 +7,14 @@ load_dotenv()
 
 
 intents = discord.Intents.default()
-intents.message_content=True
+intents.message_content = True
 bot = commands.Bot(debug_guilds=[955135608228024394], command_prefix="-", status=discord.Status.dnd,
                    activity=discord.Activity(type=discord.ActivityType.listening, name="keyboard noises and no errors"),
                    owner='820255805257023498', intents=intents, )
 
-bot=discord.Bot()
+bot = discord.Bot()
+
+
 @bot.listen()
 async def on_ready():
     embed = discord.Embed(title=":green_circle: Online!\nTime to mess around!", timestamp=discord.utils.utcnow(),
@@ -20,18 +22,19 @@ async def on_ready():
     await bot.get_guild(955135608228024394).get_channel(1011649871511572500).send(embed=embed)
     print("Now ready!")
 
+
 @bot.slash_command(description="Restart the bot")
 async def restart(ctx):
-    await ctx.respond ("Restarting.")    
+    await ctx.respond("Restarting.")
     embed = discord.Embed(title=":arrows_counterclockwise: Restarting...", timestamp=discord.utils.utcnow(), color=0xFFA500)
     await bot.get_guild(955135608228024394).get_channel(1048306173071347782).send(embed=embed)
     quit()
+
+
 @bot.slash_command(name="cal1", description="run a calculation")
-async def cal1(ctx, first :discord.Option(int), mark: discord.Option(description="What operation you want to run", choices=["+", "-", "*", "/"]), second: discord.Option(int)):
-
-
-    if mark==("+"):
-        calcu=(f"{first}+{second} = {first + second}")
+async def cal1(ctx, first: discord.Option(int), mark: discord.Option(description="What operation you want to run", choices=["+", "-", "*", "/"]), second: discord.Option(int)):
+    if mark == "+":
+        calcu = f"{first}+{second} = {first + second}"
         print('cal done ')
     if mark==('-'):
         calcu=(f"{first}-{second} = {first - second}")
@@ -44,6 +47,10 @@ async def cal1(ctx, first :discord.Option(int), mark: discord.Option(description
     embed.add_field(name='your calculation is here!', value=calcu)
     await ctx.respond(embed=embed)
     print(f'command cal runned; {calcu} {discord.user.User}')
+
+
+
+
 
 
 @bot.slash_command(name='info', description='get info about the bot')
@@ -73,7 +80,7 @@ async def hello(interaction: discord.Interaction):
 
 
 
-
+@bot.slash_command(name="distance-thing", description="change the Mesure ting")
 
 
 @bot.command()
@@ -154,8 +161,9 @@ async def on_command_error(ctx, error):
 @bot.listen()
 async def on_message(message):
     print ("message")
-    print (message.content)
+    print (discord.message.content)
     if "dobbie" in message.content.lower():
-        await message.add_reaction("👀")
+        print('your got fans')
+        await discord.PartialMessage.message.add_reaction()
 
 bot.run(os.getenv('TOKEN'))
