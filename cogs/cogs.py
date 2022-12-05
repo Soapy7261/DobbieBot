@@ -1,8 +1,8 @@
-from discord import slash_command, commands
-from utils.helpers import getcogs
 import discord, os
-from utils.data import getdata
-info = getdata.info()
+from discord import slash_command, commands
+from utils.helpers.getcogs import getcogs
+from utils.data.getdata import info
+info = info()
 class Cogs(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
@@ -30,6 +30,6 @@ class Cogs(commands.Cog):
             await ctx.respond(f"```py\n{e}\n```", ephemeral=True)
             return
         await ctx.respond(f"{action}ed {cog}", ephemeral=True)
-        
+
 def setup(bot):
     bot.add_cog(Cogs(bot))

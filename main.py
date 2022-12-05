@@ -1,4 +1,6 @@
 import discord
+from utils.data.getdata import info
+info = info(False)
 intents = discord.Intents.all()
 bot = discord.Bot(debug_guilds=[955135608228024394],
     status=discord.Status.dnd,
@@ -78,6 +80,4 @@ async def on_message(message):
         print('you got fans')
         #Add an eyes reaction
         await message.add_reaction("👀")
-from utils.data import getdata
-info = getdata.info(False)
 bot.run(info['Token'])
