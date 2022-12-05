@@ -14,6 +14,10 @@ def info(use_json: bool = False):
         if os.getenv("TOKEN") is None:
             print("TOKEN not found! Please create it.")
             sys.exit()
+        if os.getenv("OWNERID") is None:
+            print("OWNERID not found! Please create it.")
+            sys.exit()
         return {
             "Token": os.getenv("TOKEN"),
+            "OwnerID": os.getenv("OWNERID"),
         }

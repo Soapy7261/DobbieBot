@@ -1,5 +1,3 @@
-import os
-import sys
 import discord
 intents = discord.Intents.all()
 bot = discord.Bot(debug_guilds=[955135608228024394],
@@ -14,14 +12,6 @@ async def on_ready():
         color=discord.Color.green())
     await bot.get_guild(955135608228024394).get_channel(1011649871511572500).send(embed=embed)
     print("Now ready!")
-
-
-@bot.slash_command(description="Restart the bot")
-async def restart(ctx):
-    await ctx.respond("Restarting.")
-    embed = discord.Embed(title="🔄 Restarting...", timestamp=discord.utils.utcnow(), color=discord.Color.orange())
-    await bot.get_guild(955135608228024394).get_channel(1048306173071347782).send(embed=embed)
-    sys.exit()
 
 @bot.slash_command(description="Run a calculation")
 async def math(ctx, first: discord.Option(int, description="The first number"), second: discord.Option(int, description="The second number"), operation: discord.Option(description="What operation you want to run", choices=["+", "-", "*", "/"])):
@@ -69,7 +59,6 @@ async def test(ctx):
 
 @bot.slash_command(description="Say something through the bot")
 async def say(ctx, message: discord.Option(str, description="The message to say")):
-    """Say something"""
     await ctx.delete()
     await ctx.send(message)
 
@@ -89,5 +78,6 @@ async def on_message(message):
         print('you got fans')
         #Add an eyes reaction
         await message.add_reaction("👀")
-
-bot.run(os.getenv('TOKEN'))
+from utils.data import getdata
+info = getdata.info(False)
+bot.run(info['Token'])
