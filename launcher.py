@@ -10,7 +10,5 @@ while True:
             please check your configuration for git
             and try again""")
     p = subprocess.run("py main.py", check=True)
-    if p.returncode != 0:
-        print ("Hmmm, something went wrong.")
     print('Restarting bot...')
     time.sleep(4)
