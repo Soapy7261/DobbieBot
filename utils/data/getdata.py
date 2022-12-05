@@ -2,7 +2,7 @@ def info(use_json: bool = False):
     if use_json:
         import json, os, sys
         if os.path.exists("config.json"):
-            with open("config.json", "r") as f:
+            with open("config.json", "r", encoding="UTF-8") as f:
                 return json.load(f)
         else:
             print ("config.json not found! Please create it.")
