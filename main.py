@@ -6,10 +6,11 @@ from dotenv import load_dotenv
 load_dotenv()
 
 intents = discord.Intents.all()
-bot = discord.Bot(debug_guilds=[955135608228024394], 
+bot = discord.Bot(
+    debug_guilds=[955135608228024394],
     status=discord.Status.dnd,
     activity=discord.Activity(
-    type=discord.ActivityType.listening, 
+    type=discord.ActivityType.listening,
     name="keyboard noises and no errors"),
     intents=intents)
 
