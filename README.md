@@ -1,5 +1,5 @@
 # DobbieBot
-Discord fork used: pycord
+Discord fork used: py-cord
 
 Checkout [this to install it](https://docs.pycord.dev/en/master/installing.html).
 

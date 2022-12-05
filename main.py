@@ -1,10 +1,6 @@
 import os
 import sys
 import discord
-from dotenv import load_dotenv
-
-load_dotenv()
-
 intents = discord.Intents.all()
 bot = discord.Bot(debug_guilds=[955135608228024394],
     status=discord.Status.dnd,
@@ -80,7 +76,7 @@ async def say(ctx, message: discord.Option(str, description="The message to say"
 @bot.event
 async def on_command_error(ctx, error):
     await ctx.reply(f"An error occurred```py\n{str(error)}\n```Message the owner for support\nThis has been logged.")
-    embed = discord.Embed(title="Error :(", timestamp=discord.utils.utcnow(),color=discord.Color.red())
+    embed = discord.Embed(title="Error :(", timestamp=discord.utils.utcnow(), color=discord.Color.red())
     embed.add_field(name = "Error:", value=str(error))
 
     await bot.get_guild(955135608228024394).get_channel(1017880577506017361).send(embed=embed)
