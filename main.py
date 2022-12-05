@@ -1,5 +1,5 @@
-import discord
 import os
+import discord
 from dotenv import load_dotenv
 
 load_dotenv()
@@ -7,13 +7,13 @@ load_dotenv()
 intents = discord.Intents.default()
 intents.message_content = True
 bot = discord.Bot(debug_guilds=[955135608228024394], status=discord.Status.dnd,
-                   activity=discord.Activity(type=discord.ActivityType.listening, name="keyboard noises and no errors"),
-                   intents=intents)
+    activity=discord.Activity(type=discord.ActivityType.listening, name="keyboard noises and no errors"),
+    intents=intents)
 
 @bot.event
 async def on_ready():
     embed = discord.Embed(title="🟢 Online!\nTime to mess around!", timestamp=discord.utils.utcnow(),
-                          color=discord.Color.green())
+        color=discord.Color.green())
     await bot.get_guild(955135608228024394).get_channel(1011649871511572500).send(embed=embed)
     print("Now ready!")
 
@@ -24,7 +24,6 @@ async def restart(ctx):
     embed = discord.Embed(title="🔄 Restarting...", timestamp=discord.utils.utcnow(), color=discord.Color.orange())
     await bot.get_guild(955135608228024394).get_channel(1048306173071347782).send(embed=embed)
     quit()
-
 
 @bot.slash_command(description="Run a calculation")
 async def math(ctx, first: discord.Option(int, description="The first number"), second: discord.Option(int, description="The second number"), operation: discord.Option(description="What operation you want to run", choices=["+", "-", "*", "/"])):
