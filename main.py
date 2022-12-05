@@ -6,17 +6,14 @@ from dotenv import load_dotenv
 load_dotenv()
 
 intents = discord.Intents.all()
-bot = discord.Bot(
-    debug_guilds=[955135608228024394],
+bot = discord.Bot(debug_guilds=[955135608228024394],
     status=discord.Status.dnd,
-    activity=discord.Activity(
-    type=discord.ActivityType.listening,
+    activity=discord.Activity(type=discord.ActivityType.listening,
     name="keyboard noises and no errors"),
     intents=intents)
 
 @bot.event
 async def on_ready():
-    """When the bot is ready, print a message to the console."""
     embed = discord.Embed(title="🟢 Online!\nTime to mess around!", timestamp=discord.utils.utcnow(),
         color=discord.Color.green())
     await bot.get_guild(955135608228024394).get_channel(1011649871511572500).send(embed=embed)
@@ -25,17 +22,13 @@ async def on_ready():
 
 @bot.slash_command(description="Restart the bot")
 async def restart(ctx):
-    """Restart the bot"""
     await ctx.respond("Restarting.")
     embed = discord.Embed(title="🔄 Restarting...", timestamp=discord.utils.utcnow(), color=discord.Color.orange())
-    await bot.get_guild(955135608228024394).get_channel(
-        1048306173071347782).send(
-        embed=embed)
+    await bot.get_guild(955135608228024394).get_channel(1048306173071347782).send(embed=embed)
     sys.exit()
 
 @bot.slash_command(description="Run a calculation")
 async def math(ctx, first: discord.Option(int, description="The first number"), second: discord.Option(int, description="The second number"), operation: discord.Option(description="What operation you want to run", choices=["+", "-", "*", "/"])):
-    """Run a calculation"""
     await ctx.defer()
     if operation == "+":
         output = f"{first}+{second} = {first + second}"
@@ -55,7 +48,6 @@ async def math(ctx, first: discord.Option(int, description="The first number"), 
 
 @bot.slash_command(description='Get info about the bot')
 async def info(ctx):
-    """Get info about the bot"""
     embed = discord.Embed(
         title="DobbieBot",
         description = "The Dobbie bot",
@@ -72,12 +64,10 @@ async def info(ctx):
 
 @bot.slash_command(description='Say hello', guild_ids=[955135608228024394])
 async def hello(ctx):
-    """Say hello"""
     await ctx.respond(f"Hello {ctx.user.mention}!", ephemeral=True)
 
 @bot.slash_command(description='Test command')
 async def test(ctx):
-    """Test command"""
     await ctx.send("te@st!")
     print("send command 'test!'")
 
@@ -89,7 +79,6 @@ async def say(ctx, message: discord.Option(str, description="The message to say"
 
 @bot.event
 async def on_command_error(ctx, error):
-    """When an error occurs"""
     await ctx.reply(f"An error occurred```py\n{str(error)}\n```Message the owner for support\nThis has been logged.")
     embed = discord.Embed(title="Error :(", timestamp=discord.utils.utcnow(),color=discord.Color.red())
     embed.add_field(name = "Error:", value=str(error))
@@ -98,7 +87,6 @@ async def on_command_error(ctx, error):
 
 @bot.event
 async def on_message(message):
-    """When a message is sent"""
     print ("message")
     print (message.content)
     if "dobbie" in message.content.lower():
