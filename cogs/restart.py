@@ -1,4 +1,4 @@
-import discord, sys
+import sys, discord
 from discord import slash_command, commands
 from utils.data import getdata
 info = getdata.info()

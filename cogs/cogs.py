@@ -1,4 +1,4 @@
-import discord, os
+import os, discord
 from discord import slash_command, commands
 from utils.helpers.getcogs import getcogs
 from utils.data.getdata import info

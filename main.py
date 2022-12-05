@@ -35,7 +35,7 @@ async def math(ctx, first: discord.Option(int, description="The first number"), 
     print(f'command math called {output} {ctx.author}')
 
 @bot.slash_command(description='Get info about the bot')
-async def info(ctx):
+async def botinfo(ctx):
     embed = discord.Embed(
         title="DobbieBot",
         description = "The Dobbie bot",
