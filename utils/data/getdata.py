@@ -9,7 +9,7 @@ def info(use_json: bool = False):
             sys.exit()
     if not use_json:
         from dotenv import load_dotenv
-        import os
+        import os, sys
         load_dotenv()
         if os.getenv("TOKEN") is None:
             print("TOKEN not found! Please create it.")
