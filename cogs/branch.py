@@ -11,7 +11,7 @@ class Branch(commands.Cog):
     async def on_ready(self):
         print('Branch cog loaded!')
 
-    @slash_command(description='Only the owner can use this command', guild_only=True)
+    @slash_command(description='Only the owner of the bot can run this command', guild_only=True)
     async def branch(self, ctx, branch: discord.Option(autocomplete=GetBranches, description='What branch to switch to', required=True)):
         if ctx.interaction.user.id != int(info['OwnerID']):
             return await ctx.respond("You don't have permission to use this command!", ephemeral=True)

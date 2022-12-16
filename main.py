@@ -1,8 +1,7 @@
 import discord
 from utils.data.getdata import info
 info = info()
-intents = discord.Intents.default()
-intents.message_content = True
+intents = discord.Intents.all()
 bot = discord.Bot(debug_guilds=[955135608228024394],
     status=discord.Status.dnd,
     activity=discord.Activity(type=discord.ActivityType.listening,
