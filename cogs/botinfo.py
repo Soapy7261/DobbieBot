@@ -23,6 +23,6 @@ class BotInfo(commands.Cog):
 
         embed.add_field(name="Main commands", value="/math\n/info")
         await ctx.respond(embed=embed)
-        
+
 def setup(bot):
     bot.add_cog(BotInfo(bot))

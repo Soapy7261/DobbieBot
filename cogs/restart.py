@@ -1,6 +1,6 @@
-import sys, discord
+import discord
 from discord import slash_command, commands
-import utils.data.getdata as getdata
+from utils.data import getdata
 info = getdata.info()
 class Restart(commands.Cog):
     def __init__(self, bot):

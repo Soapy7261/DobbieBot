@@ -16,6 +16,6 @@ class Branch(commands.Cog):
         if ctx.interaction.user.id != int(info['OwnerID']):
             return await ctx.respond("You don't have permission to use this command!", ephemeral=True)
         await ctx.respond(f'You selected {branch}', ephemeral=True)
-        
+
 def setup(bot):
     bot.add_cog(Branch(bot))
