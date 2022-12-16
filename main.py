@@ -4,16 +4,23 @@ info = info()
 intents = discord.Intents.all()
 bot = discord.Bot(debug_guilds=[955135608228024394],
     status=discord.Status.dnd,
-    activity=discord.Activity(type=discord.ActivityType.listening,
-    name="keyboard noises and no errors"),
+    activity=discord.Activity(type=discord.ActivityType.playing,
+    name="Booting..."),
     intents=intents)
 bot.load_extensions("cogs")
+global first
+first = False
 @bot.event
 async def on_ready():
+    global first
     embed = discord.Embed(title="🟢 Online!\nTime to mess around!", timestamp=discord.utils.utcnow(),
         color=discord.Color.green())
     await bot.get_guild(955135608228024394).get_channel(1011649871511572500).send(embed=embed)
     print(f"Ready! Logged in as {bot.user}")
+    if first == True:
+        await bot.change_presence(activity=discord.Activity(type=discord.ActivityType.listening, 
+            name=f"my creator's keyboard | In {len(bot.guilds)} servers"), status=discord.Status.online)
+        first = False
 
 @bot.slash_command(description='Say hello', guild_ids=[955135608228024394])
 async def hello(ctx):

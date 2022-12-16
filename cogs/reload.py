@@ -24,7 +24,7 @@ class Reload(commands.Cog):
             await ctx.respond ("```py\n" + str(e) + "\n```", ephemeral=True)
         await asyncio.sleep(3)
         await self.bot.change_presence(activity=discord.Activity(type=discord.ActivityType.listening, name=f"my creator's keyboard | In {len(self.bot.guilds)} servers"), status=discord.Status.online)
-        return await ctx.respond(f"Finished!", ephemeral=True)
-        
+        return await ctx.respond("Finished!", ephemeral=True)
+
 def setup(bot):
     bot.add_cog(Reload(bot))
