@@ -1,4 +1,5 @@
 {
     "Token": "YourBotTokenHere",
-    "OwnerID": "YourIDHere"
+    "OwnerID": "YourIDHere",
+    "Branch": "main"
 }

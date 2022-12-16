@@ -1,6 +1,6 @@
 import sys, discord
 from discord import slash_command, commands
-from utils.data import getdata
+import utils.data.getdata as getdata
 info = getdata.info()
 class Restart(commands.Cog):
     def __init__(self, bot):
@@ -17,7 +17,7 @@ class Restart(commands.Cog):
         await ctx.respond("Restarting.")
         embed = discord.Embed(title="🔄 Restarting...", timestamp=discord.utils.utcnow(), color=discord.Color.orange())
         await self.bot.get_guild(955135608228024394).get_channel(1048306173071347782).send(embed=embed)
-        sys.exit()
+        await self.bot.close()
 
 def setup(bot):
     bot.add_cog(Restart(bot))

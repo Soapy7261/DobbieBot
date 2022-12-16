@@ -1,11 +1,11 @@
 # Security Policy
 
 ## Supported Versions
-
-| Version | Support status          |
+Only the latest version of DobbieBot is supported, older versions are not supported.
+| Version | Support status |
 | ------- | ------------------ |
 | 2.LATEST   | ✅ Active |
-| 1.LATEST   | 🟡 Deprecated |
+| 1.X   | ❌ EOL |
 
 ## Valid Vulnerabilities
 Vulnerabilities in this project mostly fall into one of the following categories:

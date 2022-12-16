@@ -1,54 +1,20 @@
 import discord
 from utils.data.getdata import info
-info = info(False)
-intents = discord.Intents.all()
+info = info()
+intents = discord.Intents.default()
+intents.message_content = True
 bot = discord.Bot(debug_guilds=[955135608228024394],
     status=discord.Status.dnd,
     activity=discord.Activity(type=discord.ActivityType.listening,
     name="keyboard noises and no errors"),
     intents=intents)
-
+bot.load_extensions("cogs")
 @bot.event
 async def on_ready():
     embed = discord.Embed(title="🟢 Online!\nTime to mess around!", timestamp=discord.utils.utcnow(),
         color=discord.Color.green())
     await bot.get_guild(955135608228024394).get_channel(1011649871511572500).send(embed=embed)
-    print("Now ready!")
-
-@bot.slash_command(description="Run a calculation")
-async def math(ctx, first: discord.Option(int, description="The first number"), second: discord.Option(int, description="The second number"), operation: discord.Option(description="What operation you want to run", choices=["+", "-", "*", "/"])):
-    await ctx.defer()
-    if operation == "+":
-        output = f"{first}+{second} = {first + second}"
-    if operation == '-':
-        output= f"{first}-{second} = {first - second}"
-    if operation == '*':
-        output= f"{first}*{second} = {first * second}"
-    if operation == '/':
-        if second == 0:
-            output= "Can't divide by 0"
-        if second != 0:
-            output= f"{first}/{second} = {first / second}"
-    embed=discord.Embed(title='Calculation', timestamp=discord.utils.utcnow(), color=discord.Color.green())
-    embed.add_field(name='Your calculation is here!', value=output)
-    await ctx.respond(embed=embed)
-    print(f'command math called {output} {ctx.author}')
-
-@bot.slash_command(description='Get info about the bot')
-async def botinfo(ctx):
-    embed = discord.Embed(
-        title="DobbieBot",
-        description = "The Dobbie bot",
-        timestamp=discord.utils.utcnow(),
-        color=discord.Color.dark_gray())
-    embed.add_field(name="Ping",value=(round(bot.latency * 1000)))
-    embed.add_field(name="Info about the bot",
-        value="""this bot is made by Soapy7261#8558
-        and Dobbie#4778. To teach Dobbie how 
-        Discord bots work and how py-cord works!""")
-
-    embed.add_field(name="Main commands", value="/math\n/info")
-    await ctx.respond(embed=embed)
+    print(f"Ready! Logged in as {bot.user}")
 
 @bot.slash_command(description='Say hello', guild_ids=[955135608228024394])
 async def hello(ctx):
