@@ -1,0 +1,17 @@
+from discord import slash_command, commands, discord
+class NAME(commands.Cog):
+    def __init__(self, bot):
+        self.bot = bot
+
+    @commands.Cog.listener()
+    async def on_ready(self):
+        print('BLANK cog loaded!')
+
+    group = discord.SlashCommandGroup("group", "Group description", default_member_permissions=discord.Permissions(PERMISSIONIDHERE))
+
+    @group.command(description='Your description')
+    async def command(self, ctx):
+        await ctx.respond('Your response')
+        
+def setup(bot):
+    bot.add_cog(NAME(bot))
