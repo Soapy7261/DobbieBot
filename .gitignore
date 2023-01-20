@@ -1,4 +1,7 @@
 .env
-config.json
 .idea
 .vscode
+config.json
+dyndata.json
+example.dyndata.json
+things.txt
