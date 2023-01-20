@@ -17,7 +17,7 @@ class BotInfo(commands.Cog):
             color=discord.Color.dark_gray())
         embed.add_field(name="Ping",value=(round(self.bot.latency * 1000)))
         embed.add_field(name="Info about the bot",
-            value="""this bot is made by Soapy7261#8558
+            value="""this bot is made by Soapy7261#7261
             and Dobbie#4778. To teach Dobbie how 
             Discord bots work and how py-cord works!""")
 

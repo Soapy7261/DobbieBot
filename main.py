@@ -29,11 +29,6 @@ async def test(ctx):
     await ctx.send("te@st!")
     print("send command 'test!'")
 
-@bot.slash_command(description="Say something through the bot")
-async def say(ctx, message: discord.Option(str, description="The message to say")):
-    await ctx.delete()
-    await ctx.send(message)
-
 @bot.event
 async def on_command_error(ctx, error):
     await ctx.reply(f"An error occurred```py\n{str(error)}\n```Message the owner for support\nThis has been logged.")

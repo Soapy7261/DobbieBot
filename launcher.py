@@ -1,5 +1,6 @@
 import subprocess
 import time
+subprocess.run("pip install -r requirements.txt", check=True) #Installs the requirements for the bot
 while True:
     print ("Starting bot...")
     g = subprocess.run("git pull", check=True) #Pulls the latest code from GitHub
