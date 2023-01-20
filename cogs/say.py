@@ -9,7 +9,7 @@ class Say(commands.Cog):
         print('Say cog loaded!')
 
     @slash_command(description="Say something through the bot")
-    async def say(ctx, message: Option(str, description="The message to say")):
+    async def say(self, ctx, message: Option(str, description="The message to say")):
         await ctx.delete()
         embed = Embed(title="Message from " + ctx.user.name, description=message, timestamp=utils.utcnow(), color=Color.embed_background())
         embed.timestamp = utils.utcnow()
