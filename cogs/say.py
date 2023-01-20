@@ -14,6 +14,6 @@ class Say(commands.Cog):
         embed = Embed(title="Message from " + ctx.user.name, description=message, timestamp=utils.utcnow(), color=Color.embed_background())
         embed.timestamp = utils.utcnow()
         await ctx.send(embed=embed)
-        
+
 def setup(bot):
     bot.add_cog(Say(bot))
