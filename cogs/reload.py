@@ -1,18 +1,19 @@
-import discord
-from discord import slash_command, commands, asyncio
+import discord, asyncio
+from discord import slash_command
+from discord.ext import commands
 from utils.data.getdata import info
-info = info()
 class Reload(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
+        self.info = info()
 
     @commands.Cog.listener()
     async def on_ready(self):
         print('Reload cog loaded!')
 
-    @slash_command(description='Only the owner of the bot can run this command', guild_only=True)
+    @slash_command(description='Only the owner of the bot can run this command', guild_ids=[955135608228024394])
     async def reload(self, ctx):
-        if ctx.author.id != int(info['OwnerID']):
+        if ctx.author.id != int(self.info['OwnerID']):
             return await ctx.respond("You don't have permission to use this command!", ephemeral=True)
         await ctx.defer()
         await self.bot.change_presence(activity=discord.Activity(type=discord.ActivityType.playing, name=f"Reloading commands, bot may be unresponsive | In {len(self.bot.guilds)} servers"), status=discord.Status.dnd)

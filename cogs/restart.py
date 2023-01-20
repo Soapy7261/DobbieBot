@@ -1,18 +1,19 @@
 import discord
-from discord import slash_command, commands
-from utils.data import getdata
-info = getdata.info()
+from discord import slash_command
+from discord.ext import commands
+from utils.data.getdata import info
 class Restart(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
+        self.info = info()
 
     @commands.Cog.listener()
     async def on_ready(self):
         print('Restart cog loaded!')
 
-    @slash_command(description="Restart the bot", guild_only=True)
+    @slash_command(description="Restart the bot", guild_ids=[955135608228024394])
     async def restart(self, ctx):
-        if ctx.author.id != int(info['OwnerID']):
+        if ctx.author.id != int(self.info['OwnerID']):
             return await ctx.respond("You don't have permission to use this command!", ephemeral=True)
         await ctx.respond("Restarting.")
         embed = discord.Embed(title="🔄 Restarting...", timestamp=discord.utils.utcnow(), color=discord.Color.orange())
