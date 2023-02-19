@@ -1,4 +1,5 @@
-from discord import slash_command, Embed, utils, Color
+from discord import Embed, utils, Color
+from discord.ext.commands import slash_command
 from discord.ext import commands
 class BotInfo(commands.Cog):
     def __init__(self, bot):

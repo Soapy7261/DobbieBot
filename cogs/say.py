@@ -1,4 +1,5 @@
-from discord import slash_command, Option, Embed, utils, Color
+from discord import Option, Embed, utils, Color
+from discord.ext.commands import slash_command
 from discord.ext import commands
 class Say(commands.Cog):
     def __init__(self, bot):
