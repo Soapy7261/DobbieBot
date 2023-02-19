@@ -4,7 +4,6 @@ info = Utils.info()
 intents = Intents.all()
 bot = Bot(debug_guilds=[955135608228024394], status=Status.dnd, activity=Activity(type=ActivityType.playing, name="Booting..."), intents=intents)
 bot.load_extensions("cogs")
-global BOOTED
 BOOTED = True
 
 @bot.listen()

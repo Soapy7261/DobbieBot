@@ -1,2 +1,2 @@
 [MESSAGES CONTROL]
-disable=missing-docstring,missing-module-docstring,line-too-long,no-member,global-statement
+disable=missing-docstring,missing-module-docstring,line-too-long,no-member,global-statement,no-name-in-module
