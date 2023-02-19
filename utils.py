@@ -1,8 +1,8 @@
 from os import listdir, getenv
-from aiohttp import ClientSession
 from json import load as jsonload
 from json.decoder import JSONDecodeError
 from sys import exit as sysexit
+from aiohttp import ClientSession
 try:
     from dotenv import load_dotenv
 except ImportError:
@@ -45,7 +45,7 @@ class Utils:
             if file.startswith(ctx.interaction.data['options'][1]['value']):
                 cogs.append(file)
                 continue
-        if cogs == []:
+        if not cogs:
             return ["No cogs found(!?)"]
         return cogs
     @staticmethod
@@ -67,4 +67,6 @@ class Utils:
                             continue
                 else:
                     branches.append("Error getting branches")
+        if not branches:
+            return ["No branches found(!?)"]
         return branches

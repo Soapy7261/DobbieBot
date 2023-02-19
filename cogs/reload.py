@@ -1,5 +1,5 @@
-import discord
 from asyncio import sleep as asyncsleep
+import discord
 from discord.ext.commands import slash_command
 from discord.ext import commands
 from utils import Utils
@@ -21,9 +21,9 @@ class Reload(commands.Cog):
         await asyncsleep(1)
         try:
             await self.bot.sync_commands()
-        except Exception as e:
+        except Exception as error:
             await ctx.respond ("Failed to reload commands!")
-            await ctx.respond ("```py\n" + str(e) + "\n```", ephemeral=True)
+            await ctx.respond ("```py\n" + str(error) + "\n```", ephemeral=True)
             await asyncsleep(3)
             return await self.bot.change_presence(activity=discord.Activity(type=discord.ActivityType.listening, name=f"my creator's keyboard | In {len(self.bot.guilds)} servers"), status=discord.Status.online)
         await asyncsleep(3)

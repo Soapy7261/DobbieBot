@@ -27,8 +27,8 @@ class Cogs(commands.Cog):
                 self.bot.unload_extension(f"commands.{cog}")
             if action == "Reload":
                 self.bot.reload_extension(f"commands.{cog}")
-        except Exception as e:
-            await ctx.respond(f"```py\n{str(e)}\n```", ephemeral=True)
+        except Exception as error:
+            await ctx.respond(f"```py\n{str(error)}\n```", ephemeral=True)
             return
         await ctx.respond(f"{action}ed {cog}", ephemeral=True)
 
