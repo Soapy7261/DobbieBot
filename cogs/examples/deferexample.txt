@@ -1,0 +1,17 @@
+from discord import slash_command, commands
+class NAME(commands.Cog):
+    def __init__(self, bot):
+        self.bot = bot
+
+    @commands.Cog.listener()
+    async def on_ready(self):
+        print('BLANK cog loaded!')
+
+    @slash_command(description='Your description')
+    async def command(self, ctx):
+        await ctx.defer() #This can also be ephemeral or invisible with parameters, this is mostly useful if what your doing takes a while so discord doesn't think your bot isn't responding
+        #Some code in here
+        await ctx.respond('Done!')
+        
+def setup(bot):
+    bot.add_cog(NAME(bot))

@@ -1,7 +1,13 @@
 # DobbieBot
-Discord fork used: pycord
+Discord fork used: py-cord
 
 Checkout [this to install it](https://docs.pycord.dev/en/master/installing.html).
 
-There are some Id's what you need to change, <br>
-this progam gets the bot tolken by using a .env file 
+# Self hosting
+
+## Creating a bot
+2. Create a [Discord application](https://discord.com/developers/applications/).
+   You have to enable all intents.
+
+## Configuration
+Please view the [config file](./CONFIGURATION.md) for more configuration options.
