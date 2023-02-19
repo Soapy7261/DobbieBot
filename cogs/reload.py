@@ -1,11 +1,12 @@
-import discord, asyncio
+import discord
+import asyncio
 from discord import slash_command
 from discord.ext import commands
-from utils.data.getdata import info
+from utils import Utils
 class Reload(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
-        self.info = info()
+        self.info = Utils.info()
 
     @commands.Cog.listener()
     async def on_ready(self):
@@ -23,6 +24,8 @@ class Reload(commands.Cog):
         except Exception as e:
             await ctx.respond ("Failed to reload commands!")
             await ctx.respond ("```py\n" + str(e) + "\n```", ephemeral=True)
+            await asyncio.sleep(3)
+            return await self.bot.change_presence(activity=discord.Activity(type=discord.ActivityType.listening, name=f"my creator's keyboard | In {len(self.bot.guilds)} servers"), status=discord.Status.online) 
         await asyncio.sleep(3)
         await self.bot.change_presence(activity=discord.Activity(type=discord.ActivityType.listening, name=f"my creator's keyboard | In {len(self.bot.guilds)} servers"), status=discord.Status.online)
         return await ctx.respond("Finished!", ephemeral=True)

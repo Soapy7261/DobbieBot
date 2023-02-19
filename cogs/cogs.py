@@ -1,18 +1,18 @@
-import os, discord
+import os
+import discord
 from discord import slash_command, commands
-from utils.helpers.getcogs import getcogs
-from utils.data.getdata import info
+from utils import Utils
 class Cogs(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
-        self.info = info()
+        self.info = Utils.info()
 
     @commands.Cog.listener()
     async def on_ready(self):
         print('Cogs cog loaded!')
 
     @slash_command(description='Load, unload, or reload cogs', guild_ids=[955135608228024394])
-    async def cogs(self, ctx, action: discord.Option(choices=["Reload", "Load", "Unload"], description='What action to run', required=True), cog: discord.Option(autocomplete=getcogs, description='The cog to run the action on', required=True)):
+    async def cogs(self, ctx, action: discord.Option(choices=["Reload", "Load", "Unload"], description='What action to run', required=True), cog: discord.Option(autocomplete=Utils.getcogs, description='The cog to run the action on', required=True)):
         if ctx.author.id != int(self.info['OwnerID']):
             return await ctx.respond("You don't have permission to use this command!", ephemeral=True)
         if cog not in [f"{fn[:-3]}" for fn in os.listdir("commands")]:

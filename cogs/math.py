@@ -1,5 +1,5 @@
-from discord import slash_command, commands
 import discord
+from discord import slash_command, commands
 class Math(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
@@ -12,11 +12,11 @@ class Math(commands.Cog):
     async def math(self, ctx, first: discord.Option(float, description="The first number"), second: discord.Option(float, description="The second number"), operation: discord.Option(description="What operation you want to run", choices=["+", "-", "*", "/"])):
         if operation == '+':
             oper = first + second
-        if operation == '-':
+        elif operation == '-':
             oper = first - second
-        if operation == '*':
+        elif operation == '*':
             oper = first * second
-        if operation == '/':
+        elif operation == '/':
             if second == 0:
                 return await ctx.respond("You can't divide by 0!", ephemeral=True)
             oper = first / second

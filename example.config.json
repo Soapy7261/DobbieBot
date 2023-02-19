@@ -1,5 +1,7 @@
 {
+    "CONFIGURATION": "Please view configuration.md!",
     "Token": "YourBotTokenHere",
     "OwnerID": "YourIDHere",
-    "Branch": "main"
+    "Sharded": false,
+    "Branch": "master"
 }

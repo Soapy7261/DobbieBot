@@ -1,6 +1,6 @@
-.env
 .idea
 .vscode
-things.txt
-dyndata.json
+cogs/__pycache__
+__pycache__
+.env
 config.json

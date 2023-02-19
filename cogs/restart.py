@@ -1,11 +1,11 @@
 import discord
 from discord import slash_command
 from discord.ext import commands
-from utils.data.getdata import info
+from utils import Utils
 class Restart(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
-        self.info = info()
+        self.info = Utils.info()
 
     @commands.Cog.listener()
     async def on_ready(self):
