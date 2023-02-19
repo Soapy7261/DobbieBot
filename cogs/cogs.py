@@ -2,8 +2,8 @@ import os
 import discord
 from discord.ext import commands
 from discord.ext.commands import slash_command
-from utils import Utils
 from discord.errors import ExtensionAlreadyLoaded, ExtensionNotLoaded, ExtensionFailed
+from utils import Utils
 class Cogs(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
