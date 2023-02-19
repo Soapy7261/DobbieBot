@@ -3,6 +3,7 @@ import discord
 from discord.ext import commands
 from discord.ext.commands import slash_command
 from utils import Utils
+from discord.errors import ExtensionAlreadyLoaded, ExtensionNotLoaded, ExtensionFailed
 class Cogs(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
@@ -27,8 +28,14 @@ class Cogs(commands.Cog):
                 self.bot.unload_extension(f"commands.{cog}")
             if action == "Reload":
                 self.bot.reload_extension(f"commands.{cog}")
-        except Exception as error:
-            await ctx.respond(f"```py\n{str(error)}\n```", ephemeral=True)
+        except ExtensionAlreadyLoaded:
+            await ctx.respond("Extension already loaded!", ephemeral=True)
+            return
+        except ExtensionNotLoaded:
+            await ctx.respond("Extension not loaded!", ephemeral=True)
+            return
+        except ExtensionFailed as error:
+            await ctx.respond(f"Extension failed to load!```py\n{str(error)}\n```", ephemeral=True)
             return
         await ctx.respond(f"{action}ed {cog}", ephemeral=True)
 

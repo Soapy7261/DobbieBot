@@ -9,11 +9,10 @@ BOOTED = True
 @bot.listen()
 async def on_ready():
     global BOOTED
-    if BOOTED is False:
+    if not BOOTED:
         print ("Reconnected(?)")
-    if BOOTED is True:
-        embed = Embed(title="🟢 Online!\nTime to mess around!", timestamp=utils.utcnow(),
-            color=Color.green())
+    if BOOTED:
+        embed = Embed(title="🟢 Online!\nTime to mess around!", timestamp=utils.utcnow(), color=Color.green())
         await bot.get_guild(955135608228024394).get_channel(1011649871511572500).send(embed=embed)
         await bot.change_presence(activity=Activity(type=ActivityType.listening,
             name=f"my creator's keyboard | In {len(bot.guilds)} servers"), status=Status.online)
@@ -34,7 +33,6 @@ async def on_command_error(ctx, error):
     await ctx.reply(f"An error occurred```py\n{str(error)}\n```Message the owner for support\nThis has been logged.")
     embed = Embed(title="Error :(", timestamp=utils.utcnow(), color=Color.red())
     embed.add_field(name = "Error:", value=str(error))
-
     await bot.get_guild(955135608228024394).get_channel(1017880577506017361).send(embed=embed)
 
 @bot.listen()
